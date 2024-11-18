@@ -3,17 +3,19 @@ import React from 'react';
 import { Typography, Accordion, AccordionSummary, AccordionDetails, Container, CardActions, Button } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ArrowCircleRight } from '@mui/icons-material';
-import { styled } from '@mui/material/styles'; // Corrected import
+import { styled } from '@mui/material/styles';
 
+// Define keyframes outside of the styled component for clarity
+const blinkKeyframes = `
+  0% { color: white; }
+  50% { color: green; }
+  100% { color: white; }
+`;
 
-// Define a styled component for the blinking icon
+// Styled component for the blinking icon
 const BlinkingIcon = styled(ArrowCircleRight)(() => ({
-  animation: 'blink 1s infinite', // Animation duration can be adjusted
-  '@keyframes blink': {
-    '0%': { color: 'white' }, // Start with green
-    '50%': { color: 'green' }, // Change to yellow at 50%
-    '100%': { color: 'white' }, // Go back to green
-  },
+  animation: `blink 1s infinite`,
+  '@keyframes blink': blinkKeyframes,
 }));
 
 const faqData = [
@@ -39,14 +41,25 @@ const faqData = [
   }
 ];
 
-// Define a styled component for the blinking icon
-
-
 interface FAQSectionProps {
   scrollToPricing: () => void;
 }
 
 const FAQSection: React.FC<FAQSectionProps> = ({ scrollToPricing }) => {
+
+  const accordionSummaryStyles = {
+    bgcolor: 'background.paper',
+    borderRadius: '8px',
+    '&:hover': {
+      bgcolor: 'action.hover',
+    },
+    transition: 'background-color 0.3s',
+  };
+
+  const accordionDetailsStyles = {
+    bgcolor: 'background.default',
+    padding: '16px',
+  };
 
   return (
     <Container sx={{ padding: 4 }}>
@@ -58,7 +71,6 @@ const FAQSection: React.FC<FAQSectionProps> = ({ scrollToPricing }) => {
         sx={{
           fontWeight: 'bold',
           color: 'primary.main',
-          // textTransform: 'uppercase',
           mb: 2,
           textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
         }}
@@ -66,39 +78,26 @@ const FAQSection: React.FC<FAQSectionProps> = ({ scrollToPricing }) => {
         Frequently Asked Questions
       </Typography>
 
-
       {faqData.map((faq, index) => (
-        <Accordion key={index} sx={{ marginBottom: '10px', borderRadius: '8px', boxShadow: 2 }}>
+        <Accordion key={faq.question} sx={{ marginBottom: '10px', borderRadius: '8px', boxShadow: 2 }}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon sx={{ color: 'primary.main' }} />}
             aria-controls={`panel${index}-content`}
             id={`panel${index}-header`}
-            sx={{
-              bgcolor: 'background.paper', // Background color for the summary
-              borderRadius: '8px', // Rounded corners
-              '&:hover': { // Hover effect
-                bgcolor: 'action.hover', // Change background on hover
-              },
-              transition: 'background-color 0.3s', // Smooth transition
-            }}
+            sx={accordionSummaryStyles}
           >
             <Typography variant="body1" sx={{ fontWeight: 'bold', color: 'text.primary', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)', }}>
               {faq.question}
             </Typography>
           </AccordionSummary>
-          <AccordionDetails
-            sx={{
-              bgcolor: 'background.default', // Background color for the details
-              padding: '16px', // Add padding to the details
-            }}
-          >
+          <AccordionDetails sx={accordionDetailsStyles}>
             <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
               {faq.answer}
             </Typography>
           </AccordionDetails>
         </Accordion>
-
       ))}
+
       <CardActions sx={{ justifyContent: 'center', marginBottom: '20px', marginTop: '10px' }}>
         <Button
           variant="contained"
@@ -112,8 +111,8 @@ const FAQSection: React.FC<FAQSectionProps> = ({ scrollToPricing }) => {
             transition: 'transform 0.3s',
             textTransform: 'uppercase',
             '&:hover': {
-              backgroundColor: '#ffb300', // Adjust background color on hover
-              transform: 'scale(1.05)', // Add scaling effect on hover
+              backgroundColor: '#ffb300',
+              transform: 'scale(1.05)',
             },
           }}
         >

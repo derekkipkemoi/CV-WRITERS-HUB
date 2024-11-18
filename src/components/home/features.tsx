@@ -1,9 +1,6 @@
 import React from 'react';
 import { Box, Typography, Grid, Container, CardContent, Card, Avatar, Divider } from '@mui/material';
 
-// Import icons from assets folder
-
-
 // Define a type for static image data
 interface StaticImageData {
     src: string;
@@ -81,7 +78,7 @@ const FeatureSection = () => {
             <Container>
                 <Grid container spacing={4} justifyContent="center">
                     {features.map((feature, index) => (
-                        <Grid item xs={12} sm={4} key={index}>
+                        <Grid item xs={12} sm={6} md={4} key={index}>
                             <Card
                                 elevation={3}
                                 sx={{
@@ -113,24 +110,15 @@ const FeatureSection = () => {
                                     >
                                         {feature.description}
                                     </Typography>
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            
-
-                                        }}
-                                    >
+                                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                         <Avatar
                                             sx={{
                                                 width: '80px',
                                                 height: '80px',
-                                                padding: "15px", // Fill the box's width
-                                                // Fill the box's height
-                                                objectFit: 'contain', // Ensure the icon is contained within the box
+                                                padding: "15px",
+                                                objectFit: 'contain',
                                             }}
-                                            src={(feature.iconSrc as StaticImageData).src || feature.iconSrc as string}
+                                            src={typeof feature.iconSrc === 'string' ? feature.iconSrc : feature.iconSrc.src}
                                             alt={feature.iconAlt}
                                         />
                                     </Box>

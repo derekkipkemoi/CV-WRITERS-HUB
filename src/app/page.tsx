@@ -9,10 +9,10 @@ import { PricingCards } from '@/components/home/pricing';
 import { ReviewCarousel } from '@/components/home/review-carousel';
 import { Box } from '@mui/material';
 
-export default function Page() {
+function Page(): JSX.Element {  // Declared as function declaration and added return type
   const pricingRef = useRef<HTMLDivElement | null>(null);
 
-  const scrollToPricing = () => {
+  const scrollToPricing = (): void => { // Added return type for the scrollToPricing function
     if (pricingRef.current) {
       pricingRef.current.scrollIntoView({ behavior: 'smooth' });
     }
@@ -34,7 +34,7 @@ export default function Page() {
         <FeatureSection />
       </Box>
       <Box sx={{ backgroundColor: '#e0f7fa', textAlign: 'center' }}>
-        <FAQSection scrollToPricing={scrollToPricing}/>
+        <FAQSection scrollToPricing={scrollToPricing} />
       </Box>
       <Box sx={{ textAlign: 'center' }}>
         <Footer />
@@ -42,3 +42,5 @@ export default function Page() {
     </Box>
   );
 }
+
+export default Page;
