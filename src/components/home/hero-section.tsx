@@ -27,7 +27,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ scrollToPricing }) => {
   return (
-    <Container sx={{ padding: 8 }}>
+    <Container sx={{ paddingTop: 8, paddingBottom: 6 }}>
       <Box
         sx={{
           display: 'flex',
@@ -58,6 +58,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ scrollToPricing }) => 
             align="left"
             sx={{
               marginBottom: 2,
+              fontSize: '1.1rem',
               textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
             }}
           >
@@ -85,7 +86,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ scrollToPricing }) => 
 
 
             ))}
-            <Divider sx={{ margin: '5px 0', backgroundColor: 'primary.main', height: '3px' }} />
+            <Divider sx={{ margin: '15px 0', backgroundColor: 'primary.main', height: '2px' }} />
           </CardContent>
           <CardActions sx={{ justifyContent: 'center' }}>
             <Button

@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles'; // Corrected import
 
 
 // Define a styled component for the blinking icon
-const BlinkingIcon = styled(ArrowCircleRight)(({ theme }) => ({
+const BlinkingIcon = styled(ArrowCircleRight)(() => ({
   animation: 'blink 1s infinite', // Animation duration can be adjusted
   '@keyframes blink': {
     '0%': { color: 'white' }, // Start with green

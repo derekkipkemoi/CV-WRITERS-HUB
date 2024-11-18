@@ -5,7 +5,7 @@ import { Box, Typography, Grid, Container, CardContent, Card, Avatar, Divider } 
 
 
 // Define a type for static image data
-type StaticImageData = {
+interface StaticImageData {
     src: string;
     height: number;
     width: number;
