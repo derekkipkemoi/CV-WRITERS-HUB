@@ -25,15 +25,13 @@ interface HeroSectionProps {
   scrollToPricing: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ scrollToPricing }) => {
+function HeroSection({ scrollToPricing }: HeroSectionProps) {
   return (
-    <Container sx={{ paddingTop: 8, paddingBottom: 6 }}>
+    <Container sx={{ pt: 8, pb: 6 }}>
       <Box
         sx={{
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
-          // paddingTop: { xs: 4, md: 8 },
-          // paddingBottom: { xs: 4, md: 8 },
           borderRadius: '8px',
         }}
       >
@@ -57,59 +55,54 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ scrollToPricing }) => 
             color="text.secondary"
             align="left"
             sx={{
-              marginBottom: 2,
+              mb: 2,
               fontSize: '1.1rem',
               textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
             }}
           >
             Unlock Your Career Potential with Expertly Crafted CVs and Resumes
           </Typography>
-          <CardContent sx={{ padding: 0 }}>
-            {services.map((service, index) => (
+          <CardContent sx={{ p: 0 }}>
+            {services.map((service) => (
               <Typography
-                key={index}
+                key={service} // Use 'service' as the key
                 variant="h6"
                 color="text.secondary"
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  marginBottom: 1,
+                  mb: 1,
                   fontSize: '1.1rem',
                   textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
-                  textTransform: 'uppercase', // This line makes the text uppercase
-                  width: '100%', // Ensures the Typography takes the full width
+                  textTransform: 'uppercase',
+                  width: '100%',
                 }}
               >
-                <Star sx={{ color: 'primary.main', marginRight: 1 }} />
-                <span style={{ textAlign: 'left', width: '100%' }}>{service}</span>
+                <Star sx={{ color: 'primary.main', mr: 1 }} />
+                <span>{service}</span>
               </Typography>
-
-
             ))}
-            <Divider sx={{ margin: '15px 0', backgroundColor: 'primary.main', height: '2px' }} />
+            <Divider sx={{ my: 2, bgcolor: 'primary.main', height: 2 }} />
           </CardContent>
           <CardActions sx={{ justifyContent: 'center' }}>
             <Button
               variant="contained"
               onClick={scrollToPricing}
               sx={{
-                backgroundColor: '#ffcc00',
+                bgcolor: '#ffcc00',
                 color: '#000',
-                marginTop: '20px',
-                // padding: '10px 20px',
+                mt: 2,
                 fontSize: '1rem',
-                borderRadius: '25px',
-                transition: 'transform 0.3s',
+                borderRadius: 25,
                 textTransform: 'uppercase',
                 '&:hover': {
-                  backgroundColor: '#ffb300',
+                  bgcolor: '#ffb300',
                   transform: 'scale(1.05)',
-
                 },
               }}
             >
               Select Package To Get Started Now
-              <BlinkingIcon sx={{ marginLeft: '1px' }} />
+              <BlinkingIcon sx={{ ml: 1 }} />
             </Button>
           </CardActions>
         </Box>
@@ -119,8 +112,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ scrollToPricing }) => 
           sx={{
             flex: 1,
             textAlign: 'center',
-            marginBottom: { xs: 4, md: 0 },
-            paddingRight: { md: 2 },
+            mb: { xs: 4, md: 0 },
+            pr: { md: 2 },
           }}
         >
           <Box
@@ -145,3 +138,5 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ scrollToPricing }) => 
     </Container>
   );
 };
+
+export default HeroSection;

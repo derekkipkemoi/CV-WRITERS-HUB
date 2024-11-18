@@ -51,13 +51,27 @@ interface ArrowProps {
 }
 
 const CustomNextArrow: React.FC<ArrowProps> = ({ onClick }) => (
-  <div className="custom-arrow next" onClick={onClick}>
+  <div
+    className="custom-arrow next"
+    onClick={onClick}
+    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick?.() }}
+    role="button"
+    tabIndex={0}
+    aria-label="Next slide"
+  >
     &#9654; {/* Right arrow symbol */}
   </div>
 );
 
 const CustomPrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
-  <div className="custom-arrow prev" onClick={onClick}>
+  <div
+    className="custom-arrow prev"
+    onClick={onClick}
+    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick?.() }}
+    role="button"
+    tabIndex={0}
+    aria-label="Previous slide"
+  >
     &#9664; {/* Left arrow symbol */}
   </div>
 );

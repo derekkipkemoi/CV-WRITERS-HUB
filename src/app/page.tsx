@@ -3,9 +3,9 @@ import React, { useRef } from 'react';
 import FAQSection from '@/components/home/faq';
 import FeatureSection from '@/components/home/features';
 import Footer from '@/components/home/footer';
-import { Header } from '@/components/home/header';
-import { HeroSection } from '@/components/home/hero-section';
-import { PricingCards } from '@/components/home/pricing';
+import  Header  from '@/components/home/header';
+import  HeroSection  from '@/components/home/hero-section';
+import  PricingCards  from '@/components/home/pricing';
 import ReviewCarousel from '@/components/home/review-carousel';
 import { Box } from '@mui/material';
 

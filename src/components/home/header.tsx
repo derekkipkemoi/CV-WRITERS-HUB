@@ -1,8 +1,7 @@
-
-import React from 'react'
+import React from 'react';
 import { Box, Button, Typography, AppBar, Toolbar } from '@mui/material';
 
-export const Header = () => {
+function Header(): React.JSX.Element { // Changed to function declaration with return type
   return (
     <AppBar position="static" color="primary">
       <Toolbar>
@@ -11,7 +10,7 @@ export const Header = () => {
           alt="Logo"
           style={{ height: '40px', marginRight: '16px' }} // Adjust height and margin as needed
         />
-        <Typography variant="h6" sx={{ flexGrow: 1,textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)', }}>
+        <Typography variant="h6" sx={{ flexGrow: 1, textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>
           CV WRITERS HUB
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -22,4 +21,6 @@ export const Header = () => {
       </Toolbar>
     </AppBar>
   );
-};
+}
+
+export default Header;
