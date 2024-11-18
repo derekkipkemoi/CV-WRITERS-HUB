@@ -9,7 +9,7 @@ import { PricingCards } from '@/components/home/pricing';
 import ReviewCarousel from '@/components/home/review-carousel';
 import { Box } from '@mui/material';
 
-function Page(): JSX.Element {  // Declared as function declaration and added return type
+function Page(): React.JSX.Element {  // Declared as function declaration and added return type
   const pricingRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToPricing = (): void => { // Added return type for the scrollToPricing function
