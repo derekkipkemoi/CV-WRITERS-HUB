@@ -1,7 +1,6 @@
-import { url } from "inspector";
 import { atomWithStorage } from "jotai/utils";
 
-import { OrderFileType, OrderPackageType, OrderTemplateType, OrderObjectType } from "@/types/order";
+import { OrderPackageType, OrderTemplateType } from "@/types/order";
 
 // Define the type for the atom's state
 

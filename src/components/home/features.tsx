@@ -1,8 +1,5 @@
 import React from 'react';
 import { Box, Typography, Grid, Container, CardContent, Card, Avatar, Divider } from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import DescriptionIcon from '@mui/icons-material/Description';
-import CreateIcon from '@mui/icons-material/Create';
 
 // Import icons from assets folder
 

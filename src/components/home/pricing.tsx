@@ -5,7 +5,6 @@ import { useAtom } from 'jotai';
 import { OrderPackage } from '../resume-order-state';
 import { CurrencyType } from '@/types/order';
 import { useRouter } from 'next/navigation'
-import { paths } from '@/paths';
 
 
 // Mock function to get the user's currency and format prices

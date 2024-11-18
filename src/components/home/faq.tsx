@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { Box, Typography, Accordion, AccordionSummary, AccordionDetails, Container, CardActions, Button } from '@mui/material';
+import { Typography, Accordion, AccordionSummary, AccordionDetails, Container, CardActions, Button } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ArrowCircleRight } from '@mui/icons-material';
 import { styled } from '@mui/material/styles'; // Corrected import

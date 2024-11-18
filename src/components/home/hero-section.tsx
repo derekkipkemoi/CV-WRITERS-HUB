@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Typography, CardContent, CardActions, Divider, Container } from '@mui/material';
-import { ArrowCircleRight, CheckCircle as CheckCircleIcon, Star } from '@mui/icons-material';
+import { ArrowCircleRight, Star } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
 const BlinkingIcon = styled(ArrowCircleRight)(({ theme }) => ({
@@ -75,12 +75,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ scrollToPricing }) => 
                   marginBottom: 1,
                   fontSize: '1.1rem',
                   textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
-                  textTransform: 'uppercase',  // This line makes the text uppercase
+                  textTransform: 'uppercase', // This line makes the text uppercase
+                  width: '100%', // Ensures the Typography takes the full width
                 }}
               >
                 <Star sx={{ color: 'primary.main', marginRight: 1 }} />
-                {service}
+                <span style={{ textAlign: 'left', width: '100%' }}>{service}</span>
               </Typography>
+
+
             ))}
             <Divider sx={{ margin: '5px 0', backgroundColor: 'primary.main', height: '3px' }} />
           </CardContent>
@@ -96,7 +99,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ scrollToPricing }) => 
                 fontSize: '1rem',
                 borderRadius: '25px',
                 transition: 'transform 0.3s',
-                textTransform: 'uppercase', 
+                textTransform: 'uppercase',
                 '&:hover': {
                   backgroundColor: '#ffb300',
                   transform: 'scale(1.05)',
