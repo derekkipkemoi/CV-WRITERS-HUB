@@ -103,7 +103,12 @@ const Dots: React.FC<DotsProps> = ({ slideCount, currentSlide, goToSlide }) => {
     <ul className="slick-dots">
       {Array.from({ length: visibleDots }).map((_, index) => (
         <li key={index} className={currentSlide === index ? "slick-active" : ""}>
-          <button type="button" onClick={() => goToSlide(index * settings.slidesToShow)}>
+          <button
+            type="button"
+            onClick={() => { // Added braces
+              goToSlide(index * settings.slidesToShow);
+            }}
+          >
             {index + 1}
           </button>
         </li>
@@ -111,6 +116,7 @@ const Dots: React.FC<DotsProps> = ({ slideCount, currentSlide, goToSlide }) => {
     </ul>
   );
 };
+
 
 const ReviewCarousel: React.FC = () => (
   <Box sx={{ padding: 4 }}>
