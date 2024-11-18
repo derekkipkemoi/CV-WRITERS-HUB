@@ -27,7 +27,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ scrollToPricing }) => {
   return (
-    <Container sx={{ padding: 4 }}>
+    <Container sx={{ padding: 8 }}>
       <Box
         sx={{
           display: 'flex',

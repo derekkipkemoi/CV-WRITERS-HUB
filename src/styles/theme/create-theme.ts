@@ -1,10 +1,9 @@
-import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
-
+import { createTheme as muiCreateTheme, PaletteMode } from '@mui/material/styles';
 import { colorSchemes } from './color-schemes';
 import { components } from './components/components';
 import { shadows } from './shadows';
-import type { Theme } from './types';
 import { typography } from './typography';
+import type { Theme } from './types';
 
 declare module '@mui/material/styles/createPalette' {
   interface PaletteRange {
@@ -36,15 +35,21 @@ declare module '@mui/material/styles/createPalette' {
   }
 }
 
-export function createTheme(): Theme {
-  const theme = extendTheme({
+// Custom theme creation function
+export function customCreateTheme(mode: PaletteMode): Theme {
+  const colorScheme = colorSchemes[mode];
+
+  const theme = muiCreateTheme({
     breakpoints: { values: { xs: 0, sm: 600, md: 900, lg: 1200, xl: 1440 } },
     components,
-    colorSchemes,
+    palette: {
+      mode,
+      ...colorScheme.palette,
+    },
     shadows,
     shape: { borderRadius: 8 },
     typography,
   });
 
-  return theme;
+  return theme as Theme;
 }
