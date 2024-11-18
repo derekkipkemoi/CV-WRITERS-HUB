@@ -4,8 +4,6 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useAtom } from 'jotai';
 import { OrderPackage } from '../resume-order-state';
 import { CurrencyType } from '@/types/order';
-
-
 // Mock function to get the user's currency and format prices
 const getCurrency = () => {
   return {
@@ -107,8 +105,6 @@ const pricingOptions = [
 export const PricingCards: React.FC = () => {
   const [orderPackage, setOrderPackage] = useAtom(OrderPackage);
 
-  console.log("order", orderPackage)
-
   const handlePackageSelect = (option: typeof pricingOptions[0]) => {
     setOrderPackage({
       title: option.title,
@@ -119,9 +115,9 @@ export const PricingCards: React.FC = () => {
       features: option.features,
     });
 
-    // if(orderPackage){
-    //   router.push(paths.auth.signUp);
-    // }
+    if(orderPackage){
+      // router.push(paths.auth.signUp);
+    }
 
   };
 
