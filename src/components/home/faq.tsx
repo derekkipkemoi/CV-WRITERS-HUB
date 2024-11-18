@@ -20,7 +20,7 @@ const BlinkingIcon = styled(ArrowCircleRight)(() => ({
 
 const faqData = [
   {
-    question: "What is included in a professional resume writing service?",
+    question: "What included in a professional resume writing service?",
     answer: "A professional resume writing service includes a personalized resume tailored to your industry and career goals, a cover letter, and LinkedIn profile optimization."
   },
   {
