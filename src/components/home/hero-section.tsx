@@ -3,7 +3,7 @@ import { Box, Button, Typography, CardContent, CardActions, Divider, Container }
 import { ArrowCircleRight, Star } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
-const BlinkingIcon = styled(ArrowCircleRight)(({ theme }) => ({
+const BlinkingIcon = styled(ArrowCircleRight)(() => ({
   animation: 'blink 1s infinite',
   '@keyframes blink': {
     '0%': { color: 'white' },

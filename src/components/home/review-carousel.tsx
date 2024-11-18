@@ -73,8 +73,8 @@ const settings = {
   autoplaySpeed: 3000, // Change slide every 2 seconds
   slidesToShow: 3,
   slidesToScroll: 1,
-  nextArrow: < CustomPrevArrow/>,
-  prevArrow: <CustomNextArrow />,
+  nextArrow: <CustomNextArrow />, // Corrected to nextArrow
+  prevArrow: <CustomPrevArrow />, // Corrected to prevArrow
   responsive: [
     {
       breakpoint: 960,
