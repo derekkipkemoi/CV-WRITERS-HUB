@@ -10,6 +10,7 @@ module.exports = {
     require.resolve('@vercel/style-guide/eslint/browser'),
     require.resolve('@vercel/style-guide/eslint/react'),
     require.resolve('@vercel/style-guide/eslint/next'),
+    
   ],
   parserOptions: {
     project,
@@ -20,6 +21,11 @@ module.exports = {
         project,
       },
     },
+  },
+  env: {
+    node: true,
+    browser: true,
+    es2021: true, // Use ES2021 features
   },
   rules: {
     '@typescript-eslint/no-unused-vars': [
@@ -55,7 +61,6 @@ module.exports = {
         },
       },
     ],
-
     // Deactivated
     '@typescript-eslint/dot-notation': 'off', // paths are used with a dot notation
     '@typescript-eslint/no-misused-promises': 'off', // onClick with async fails
@@ -76,7 +81,6 @@ module.exports = {
     'no-redeclare': 'off', // conflict with TypeScript function overloads
     'react/jsx-fragments': 'off', // personal style
     'react/prop-types': 'off', // TypeScript is used for type checking
-
     '@next/next/no-img-element': 'off', // Temporary disabled
   },
 };

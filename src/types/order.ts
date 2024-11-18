@@ -27,7 +27,6 @@ export interface OrderTemplateType {
 }
 
 export interface OrderObjectType {
-  [x: string]: any;
   id: string;
   orderId: string;
   package: OrderPackageType;
