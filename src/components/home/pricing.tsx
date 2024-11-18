@@ -104,8 +104,8 @@ const pricingOptions = [
   },
 ];
 
-const PricingCards = (): JSX.Element => {
-  const [orderPackage, setOrderPackage] = useAtom(OrderPackage);
+const PricingCards = (): React.JSX.Element => {
+  const [_, setOrderPackage] = useAtom(OrderPackage);
 
   const handlePackageSelect = (option: typeof pricingOptions[0]): void => {
     setOrderPackage({
