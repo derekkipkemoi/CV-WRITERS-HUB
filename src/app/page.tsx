@@ -6,7 +6,7 @@ import Footer from '@/components/home/footer';
 import { Header } from '@/components/home/header';
 import { HeroSection } from '@/components/home/hero-section';
 import { PricingCards } from '@/components/home/pricing';
-import { ReviewCarousel } from '@/components/home/review-carousel';
+import ReviewCarousel from '@/components/home/review-carousel';
 import { Box } from '@mui/material';
 
 function Page(): JSX.Element {  // Declared as function declaration and added return type

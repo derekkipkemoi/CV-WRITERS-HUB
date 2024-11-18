@@ -45,36 +45,34 @@ const reviews = [
 ];
 
 
+// Arrow components
 interface ArrowProps {
-  onClick?: () => void; // onClick function
+  onClick?: () => void;
 }
 
-const CustomNextArrow: React.FC<ArrowProps> = ({ onClick }) => {
-  return (
-    <div className="custom-arrow next" onClick={onClick}>
-      &#9654; {/* Right arrow symbol */}
-    </div>
-  );
-};
+const CustomNextArrow: React.FC<ArrowProps> = ({ onClick }) => (
+  <div className="custom-arrow next" onClick={onClick}>
+    &#9654; {/* Right arrow symbol */}
+  </div>
+);
 
-const CustomPrevArrow: React.FC<ArrowProps> = ({ onClick }) => {
-  return (
-    <div className="custom-arrow prev" onClick={onClick}>
-      &#9664; {/* Left arrow symbol */}
-    </div>
-  );
-};
+const CustomPrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
+  <div className="custom-arrow prev" onClick={onClick}>
+    &#9664; {/* Left arrow symbol */}
+  </div>
+);
 
+// Slider settings
 const settings = {
   dots: false,
   infinite: true,
   speed: 500,
   autoplay: true,
-  autoplaySpeed: 3000, // Change slide every 2 seconds
+  autoplaySpeed: 3000, 
   slidesToShow: 3,
   slidesToScroll: 1,
-  nextArrow: <CustomNextArrow />, // Corrected to nextArrow
-  prevArrow: <CustomPrevArrow />, // Corrected to prevArrow
+  nextArrow: <CustomNextArrow />,
+  prevArrow: <CustomPrevArrow />,
   responsive: [
     {
       breakpoint: 960,
@@ -91,8 +89,13 @@ const settings = {
   ],
 };
 
-const Dots = (props: any) => {
-  const { dots, slideCount, currentSlide } = props;
+interface DotsProps {
+  slideCount: number;
+  currentSlide: number;
+  goToSlide: (index: number) => void;
+}
+
+const Dots: React.FC<DotsProps> = ({ slideCount, currentSlide, goToSlide }) => {
   const totalSlides = Math.ceil(slideCount / settings.slidesToShow);
   const visibleDots = Math.min(3, totalSlides);
 
@@ -100,7 +103,7 @@ const Dots = (props: any) => {
     <ul className="slick-dots">
       {Array.from({ length: visibleDots }).map((_, index) => (
         <li key={index} className={currentSlide === index ? "slick-active" : ""}>
-          <button onClick={() => props.goToSlide(index * settings.slidesToShow)}>
+          <button type="button" onClick={() => goToSlide(index * settings.slidesToShow)}>
             {index + 1}
           </button>
         </li>
@@ -109,97 +112,95 @@ const Dots = (props: any) => {
   );
 };
 
-export const ReviewCarousel = () => {
-  return (
-    <Box sx={{ padding: 4 }}>
-      <Typography
-        variant="h4"
-        component="h2"
-        gutterBottom
-        align="center"
-        sx={{
-          fontWeight: 'bold',
-          color: 'primary.main',
-          // textTransform: 'uppercase',
-          mb: 2,
-          textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
-        }}
-      >
-        Clients Testimonials
-      </Typography>
-      <Typography
-        variant="body1"
-        component="p"
-        gutterBottom
-        align="center"
-        sx={{
-          maxWidth: '600px',
-          mx: 'auto',
-          lineHeight: 1.6,
-          color: 'text.secondary',
-          fontSize: '1.1rem',
-          padding: '0 16px',
-          paddingBottom: 2,
-          textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
-        }}
-      >
-        Our clients appreciate our dedication to crafting exceptional resumes that help them achieve their career goals. Here's what they have to say about our services:
-      </Typography>
+const ReviewCarousel: React.FC = () => (
+  <Box sx={{ padding: 4 }}>
+    <Typography
+      variant="h4"
+      component="h2"
+      gutterBottom
+      align="center"
+      sx={{
+        fontWeight: 'bold',
+        color: 'primary.main',
+        // textTransform: 'uppercase',
+        mb: 2,
+        textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
+      }}
+    >
+      Clients Testimonials
+    </Typography>
+    <Typography
+      variant="body1"
+      component="p"
+      gutterBottom
+      align="center"
+      sx={{
+        maxWidth: '600px',
+        mx: 'auto',
+        lineHeight: 1.6,
+        color: 'text.secondary',
+        fontSize: '1.1rem',
+        padding: '0 16px',
+        paddingBottom: 2,
+        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
+      }}
+    >
+      Our clients appreciate our dedication to crafting exceptional resumes that help them achieve their career goals. Here's what they have to say about our services:
+    </Typography>
 
-      <div className="review-carousel">
-        <Slider
-          {...{
-            ...settings,
-            customPaging: (i) => <Dots slideCount={reviews.length} currentSlide={i} />
-          }}
-        >
-          {reviews.map((review, index) => (
-            <div key={index}>
-              <Card
-                className="review-card"
-                sx={{
-                  boxShadow: 3,
-                  borderRadius: 2,
-                  minHeight: "150px",
-                  backgroundColor: '#f9f9f9', // Light background color
-                  transition: 'transform 0.3s, box-shadow 0.3s', // Smooth transition for hover effects
-                  '&:hover': {
-                    transform: 'scale(1.02)', // Slight zoom effect on hover
-                    boxShadow: 6, // Increase shadow on hover
-                  },
-                  padding: 2, // Padding inside the card
-                  border: '1px solid #e0e0e0', // Subtle border
-                }}
-              >
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    sx={{ fontWeight: 'bold', mb: 1 }} // Bold font with margin below
-                  >
-                    {review.name}
-                  </Typography>
-                  <Divider sx={{ margin: '10px 0', backgroundColor: 'primary.main', height: '2px' }} />
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{ mb: 1 }} // Margin below for spacing
-                  >
-                    {review.review}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{ fontWeight: '500', color: 'primary.main' }} // Make rating stand out
-                  >
-                    {review.rating}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </Slider>
-      </div>
-    </Box>
-  );
-};
+    <div className="review-carousel">
+      <Slider
+        {...{
+          ...settings,
+          customPaging: (i) => <Dots slideCount={reviews.length} currentSlide={i} goToSlide={() => { }} />,
+        }}
+      >
+        {reviews.map((review, index) => (
+          <div key={index}>
+            <Card
+              className="review-card"
+              sx={{
+                boxShadow: 3,
+                borderRadius: 2,
+                minHeight: "150px",
+                backgroundColor: '#f9f9f9', // Light background color
+                transition: 'transform 0.3s, box-shadow 0.3s', // Smooth transition for hover effects
+                '&:hover': {
+                  transform: 'scale(1.02)', // Slight zoom effect on hover
+                  boxShadow: 6, // Increase shadow on hover
+                },
+                padding: 2, // Padding inside the card
+                border: '1px solid #e0e0e0', // Subtle border
+              }}
+            >
+              <CardContent>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 'bold', mb: 1 }} // Bold font with margin below
+                >
+                  {review.name}
+                </Typography>
+                <Divider sx={{ margin: '10px 0', backgroundColor: 'primary.main', height: '2px' }} />
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{ mb: 1 }} // Margin below for spacing
+                >
+                  {review.review}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ fontWeight: '500', color: 'primary.main' }} // Make rating stand out
+                >
+                  {review.rating}
+                </Typography>
+              </CardContent>
+            </Card>
+          </div>
+        ))}
+      </Slider>
+    </div>
+  </Box>
+);
 
 export default ReviewCarousel;

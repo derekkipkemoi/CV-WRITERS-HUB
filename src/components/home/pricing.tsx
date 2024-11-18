@@ -4,7 +4,6 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useAtom } from 'jotai';
 import { OrderPackage } from '../resume-order-state';
 import { CurrencyType } from '@/types/order';
-import { useRouter } from 'next/navigation'
 
 
 // Mock function to get the user's currency and format prices
@@ -107,7 +106,6 @@ const pricingOptions = [
 
 export const PricingCards: React.FC = () => {
   const [orderPackage, setOrderPackage] = useAtom(OrderPackage);
-  const router = useRouter();
 
   console.log("order", orderPackage)
 
