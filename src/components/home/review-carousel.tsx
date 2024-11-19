@@ -165,7 +165,7 @@ const ReviewCarousel: React.FC = () => (
         textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
       }}
     >
-      Our clients appreciate our dedication to crafting exceptional resumes that help them achieve their career goals. Here's what they have to say about our services:
+      Our clients appreciate our dedication to crafting exceptional resumes that help them achieve their career goals. Here what they have to say about our services
     </Typography>
 
     <div className="review-carousel">

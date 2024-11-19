@@ -185,8 +185,10 @@ const PricingCards: React.FC = () => {
                     borderTopRightRadius: 2,
                     fontSize: '1.5rem',
                     padding: '16px 0',
+                    fontWeight: 'bold'
                   }}
                 />
+                
                 <Divider sx={{ backgroundColor: 'primary.main', height: '2px' }} />
                 <CardContent sx={{ padding: '24px 16px' }}>
                   <Typography
@@ -212,7 +214,7 @@ const PricingCards: React.FC = () => {
                   >
                     {option.description}
                   </Typography>
-                  <Divider sx={{ margin: '10px 0', backgroundColor: 'primary.main', height: '2px' }} />
+                  <Divider sx={{ margin: '10px 0', backgroundColor: 'primary.main', height: '0.5px' }} />
                   <Box sx={{ mb: 3, textAlign: 'left' }}>
                     {option.features.map((feature, idx) => (
                       <Typography
