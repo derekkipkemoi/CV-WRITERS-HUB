@@ -170,7 +170,9 @@ Our clients appreciate our dedication to crafting exceptional resumes that help 
     <Slider
         {...{
           ...settings,
-          customPaging: (i) => <Dots slideCount={reviews.length} currentSlide={i} goToSlide={() => { }} />,
+          customPaging: (i) => <Dots slideCount={reviews.length} currentSlide={i} goToSlide={() => { 
+            // Intentionally left empty
+          }} />,
         }}
       >
         {reviews.map((review, index) => (
