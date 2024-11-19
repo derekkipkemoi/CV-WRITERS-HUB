@@ -12,7 +12,7 @@ const reviews = [
   { name: "Joyce Muthoni", review: "Good service overall. My CV looks good, but could use more details.", rating: "⭐⭐⭐⭐" },
   { name: "Ali Rahman", review: "Very happy with my CV. It's concise and effectively highlights my skills.", rating: "⭐⭐⭐⭐⭐" },
   { name: "Leila Hassan", review: "The service exceeded my expectations. My CV now looks very professional.", rating: "⭐⭐⭐⭐⭐" },
-  { name: "Michael Ochieng", review: "Great value! I received a quality CV that I’m proud to share.", rating: "⭐⭐⭐⭐" },
+  { name: "Michael Ochieng", review: "Great value! I received a quality CV that Im proud to share.", rating: "⭐⭐⭐⭐" },
   { name: "Nadia Kamau", review: "Impressive service! My CV has opened doors for new job opportunities.", rating: "⭐⭐⭐⭐⭐" },
   { name: "Diana Wanjiru", review: "Friendly staff and quick turnaround. My CV looks fantastic now.", rating: "⭐⭐⭐⭐" },
   { name: "Julius Mwenda", review: "Highly satisfied with the service. I would recommend it to anyone.", rating: "⭐⭐⭐⭐⭐" },
@@ -22,9 +22,9 @@ const reviews = [
   { name: "Esther Nyakundi", review: "Good overall experience. I appreciated the clear communication throughout.", rating: "⭐⭐⭐⭐" },
   { name: "Frankline Njeru", review: "The resume they created for me is outstanding! Great service.", rating: "⭐⭐⭐⭐⭐" },
   { name: "Vera Chebet", review: "Quick and efficient service. My CV has definitely improved.", rating: "⭐⭐⭐⭐" },
-  { name: "Emmanuel Kiragu", review: "The CV looks very polished. I’m confident it will help my job search.", rating: "⭐⭐⭐⭐⭐" },
-  { name: "Pamela Nduku", review: "The service was quick, and I’m pleased with my new CV. Thank you!", rating: "⭐⭐⭐⭐" },
-  { name: "Samira Abdalla", review: "Fantastic job! I’m receiving more responses from employers since I updated my CV.", rating: "⭐⭐⭐⭐⭐" },
+  { name: "Emmanuel Kiragu", review: "The CV looks very polished. Im confident it will help my job search.", rating: "⭐⭐⭐⭐⭐" },
+  { name: "Pamela Nduku", review: "The service was quick, and Im pleased with my new CV. Thank you!", rating: "⭐⭐⭐⭐" },
+  { name: "Samira Abdalla", review: "Fantastic job! Im receiving more responses from employers since I updated my CV.", rating: "⭐⭐⭐⭐⭐" },
   { name: "Charles Otieno", review: "Professional and friendly team. They did an excellent job on my CV.", rating: "⭐⭐⭐⭐" },
   { name: "Nia Karanja", review: "Highly recommend! They know how to present your skills effectively.", rating: "⭐⭐⭐⭐⭐" },
   { name: "Jasmin Wambui", review: "Great experience from start to finish. My CV is just what I needed.", rating: "⭐⭐⭐⭐" },
@@ -119,7 +119,7 @@ const Dots: React.FC<DotsProps> = ({ slideCount, currentSlide, goToSlide }) => {
         <li key={index} className={currentSlide === index ? "slick-active" : ""}>
           <button
             type="button"
-            onClick={() => { // Added braces
+            onClick={() => {
               goToSlide(index * settings.slidesToShow);
             }}
           >
@@ -131,7 +131,6 @@ const Dots: React.FC<DotsProps> = ({ slideCount, currentSlide, goToSlide }) => {
   );
 };
 
-
 const ReviewCarousel: React.FC = () => (
   <Box sx={{ padding: 4 }}>
     <Typography
@@ -142,7 +141,6 @@ const ReviewCarousel: React.FC = () => (
       sx={{
         fontWeight: 'bold',
         color: 'primary.main',
-        // textTransform: 'uppercase',
         mb: 2,
         textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
       }}
@@ -165,14 +163,16 @@ const ReviewCarousel: React.FC = () => (
         textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
       }}
     >
-      Our clients appreciate our dedication to crafting exceptional resumes that help them achieve their career goals. Here what they have to say about our services
+      Our clients appreciate our dedication to crafting exceptional resumes that help them achieve their career goals. Here's what they have to say about our services.
     </Typography>
 
     <div className="review-carousel">
       <Slider
         {...{
           ...settings,
-          customPaging: (i) => <Dots slideCount={reviews.length} currentSlide={i} goToSlide={() => { }} />,
+          customPaging: (i) => (
+            <Dots slideCount={reviews.length} currentSlide={i} goToSlide={() => { }} />
+          ),
         }}
       >
         {reviews.map((review, index) => (
