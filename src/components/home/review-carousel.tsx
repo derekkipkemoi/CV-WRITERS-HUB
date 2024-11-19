@@ -103,34 +103,34 @@ const settings = {
   ],
 };
 
-interface DotsProps {
-  slideCount: number;
-  currentSlide: number;
-  goToSlide: (index: number) => void;
-}
+// interface DotsProps {
+//   slideCount: number;
+//   currentSlide: number;
+//   goToSlide: (index: number) => void;
+// }
 
 // Define the Dots component outside of the ReviewCarousel component
-const Dots: React.FC<DotsProps> = ({ slideCount, currentSlide, goToSlide }) => {
-  const totalSlides = Math.ceil(slideCount / settings.slidesToShow);
-  const visibleDots = Math.min(3, totalSlides);
+// const Dots: React.FC<DotsProps> = ({ slideCount, currentSlide, goToSlide }) => {
+//   const totalSlides = Math.ceil(slideCount / settings.slidesToShow);
+//   const visibleDots = Math.min(3, totalSlides);
 
-  return (
-    <ul className="slick-dots">
-      {Array.from({ length: visibleDots }).map((_, index) => (
-        <li key={index} className={currentSlide === index ? "slick-active" : ""}>
-          <button
-            type="button"
-            onClick={() => {
-              goToSlide(index * settings.slidesToShow);
-            }}
-          >
-            {index + 1}
-          </button>
-        </li>
-      ))}
-    </ul>
-  );
-};
+//   return (
+//     <ul className="slick-dots">
+//       {Array.from({ length: visibleDots }).map((_, index) => (
+//         <li key={index} className={currentSlide === index ? "slick-active" : ""}>
+//           <button
+//             type="button"
+//             onClick={() => {
+//               goToSlide(index * settings.slidesToShow);
+//             }}
+//           >
+//             {index + 1}
+//           </button>
+//         </li>
+//       ))}
+//     </ul>
+//   );
+// };
 
 const ReviewCarousel: React.FC = () => (
   <Box sx={{ padding: 4 }}>
