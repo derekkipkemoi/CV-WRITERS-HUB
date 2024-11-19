@@ -14,11 +14,11 @@ const BlinkingIcon = styled(ArrowCircleRight)(() => ({
 
 const services = [
   "Expert CV Writing",
-  "Personalized Cover Letter Crafting",
+  "Personalized Cover Letter",
   "LinkedIn Profile Enhancement",
   "Tailored Resume Templates",
   "ATS-Friendly Resume Optimization",
-  "Comprehensive User Dashboard & Support"
+  "User Dashboard & Support"
 ];
 
 interface HeroSectionProps {
