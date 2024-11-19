@@ -116,7 +116,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ scrollToPricing }) => {
             },
           }}
         >
-          Select Package To Get Started Now
+          Get Started Now
           <BlinkingIcon sx={{ marginLeft: '8px' }} />
         </Button>
       </CardActions>

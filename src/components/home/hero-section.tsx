@@ -101,7 +101,7 @@ function HeroSection({ scrollToPricing }: HeroSectionProps) {
                 },
               }}
             >
-              Select Package To Get Started Now
+              Get Started Now
               <BlinkingIcon sx={{ ml: 1 }} />
             </Button>
           </CardActions>
