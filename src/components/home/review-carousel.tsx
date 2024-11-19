@@ -109,6 +109,7 @@ interface DotsProps {
   goToSlide: (index: number) => void;
 }
 
+// Define the Dots component outside of the ReviewCarousel component
 const Dots: React.FC<DotsProps> = ({ slideCount, currentSlide, goToSlide }) => {
   const totalSlides = Math.ceil(slideCount / settings.slidesToShow);
   const visibleDots = Math.min(3, totalSlides);
@@ -166,61 +167,65 @@ const ReviewCarousel: React.FC = () => (
 Our clients appreciate our dedication to crafting exceptional resumes that help them achieve their career goals. Here&apos;s what they have to say about our services
 </Typography>
 
-    <div className="review-carousel">
-    <Slider
-        {...{
-          ...settings,
-          customPaging: (i) => <Dots slideCount={reviews.length} currentSlide={i} goToSlide={() => { 
-            // Intentionally left empty
-          }} />,
-        }}
-      >
-        {reviews.map((review, index) => (
-          <div key={index}>
-            <Card
-              className="review-card"
-              sx={{
-                boxShadow: 3,
-                borderRadius: 2,
-                minHeight: "150px",
-                backgroundColor: '#f9f9f9', // Light background color
-                transition: 'transform 0.3s, box-shadow 0.3s', // Smooth transition for hover effects
-                '&:hover': {
-                  transform: 'scale(1.02)', // Slight zoom effect on hover
-                  boxShadow: 6, // Increase shadow on hover
-                },
-                padding: 2, // Padding inside the card
-                border: '1px solid #e0e0e0', // Subtle border
-              }}
-            >
-              <CardContent>
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: 'bold', mb: 1 }} // Bold font with margin below
-                >
-                  {review.name}
-                </Typography>
-                <Divider sx={{ margin: '10px 0', backgroundColor: 'primary.main', height: '2px' }} />
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{ mb: 1 }} // Margin below for spacing
-                >
-                  {review.review}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ fontWeight: '500', color: 'primary.main' }} // Make rating stand out
-                >
-                  {review.rating}
-                </Typography>
-              </CardContent>
-            </Card>
-          </div>
-        ))}
-      </Slider>
-    </div>
+<div className="review-carousel">
+        <Slider
+          {...{
+            ...settings,
+            customPaging: (i: number) => (
+              <Dots slideCount={reviews.length} currentSlide={i} goToSlide={goToSlide} />
+            ),
+          }}
+        >
+          {reviews.map((review, index) => (
+            <div key={index}>
+              <Card
+                className="review-card"
+                sx={{
+                  boxShadow: 3,
+                  borderRadius: 2,
+                  minHeight: "150px",
+                  backgroundColor: '#f9f9f9',
+                  transition: 'transform 0.3s, box-shadow 0.3s',
+                  '&:hover': {
+                    transform: 'scale(1.02)',
+                    boxShadow: 6,
+                  },
+                  padding: 2,
+                  border: '1px solid #e0e0e0',
+                }}
+              >
+                <CardContent>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontWeight: 'bold', mb: 1 }}
+                  >
+                    {review.name}
+                  </Typography>
+                  <Divider sx={{ margin: '10px 0', backgroundColor: 'primary.main', height: '2px' }} />
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    sx={{ mb: 1 }}
+                  >
+                    {review.review}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{ fontWeight: '500', color: 'primary.main' }}
+                  >
+                    {review.rating}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </Slider>
+      </div>
   </Box>
 );
 
 export default ReviewCarousel;
+
+function goToSlide(index: number): void {
+  throw new Error('Function not implemented.');
+}
