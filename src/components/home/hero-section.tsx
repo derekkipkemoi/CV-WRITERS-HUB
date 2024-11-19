@@ -15,7 +15,7 @@ const BlinkingIcon = styled(ArrowCircleRight)(() => ({
 const services = [
   "Expert CV Writing",
   "Personalized Cover Letter",
-  "LinkedIn Profile Enhancement",
+  "LinkedIn Profile Optimization",
   "Tailored Resume Templates",
   "ATS-Friendly Resume Optimization",
   "User Dashboard & Support"
