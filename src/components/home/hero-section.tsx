@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Typography, CardContent, CardActions, Divider, Container } from '@mui/material';
-import { ArrowCircleRight, Check, CheckCircleOutlineOutlined, Star } from '@mui/icons-material';
+import { ArrowCircleRight, CheckCircleOutlineOutlined } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
 const BlinkingIcon = styled(ArrowCircleRight)(() => ({
