@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { Box, Card, CardContent, Container, Divider, Typography } from '@mui/material';
+import { Card, CardContent, Container, Divider, Typography } from '@mui/material';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
