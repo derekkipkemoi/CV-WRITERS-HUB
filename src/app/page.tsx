@@ -27,13 +27,13 @@ function Page(): React.JSX.Element {  // Declared as function declaration and ad
       <Box sx={{ backgroundColor: '#ffff', textAlign: 'center' }}>
         <ReviewCarousel />
       </Box>
-      <Box ref={pricingRef} sx={{ backgroundColor: '#e0f7fa', textAlign: 'center' }}>
+      <Box ref={pricingRef} sx={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
         <PricingCards />
       </Box>
       <Box sx={{ backgroundColor: '#ffff', textAlign: 'center' }}>
         <FeatureSection />
       </Box>
-      <Box sx={{ backgroundColor: '#e0f7fa', textAlign: 'center' }}>
+      <Box sx={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
         <FAQSection scrollToPricing={scrollToPricing} />
       </Box>
       <Box sx={{ textAlign: 'center' }}>

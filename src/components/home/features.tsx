@@ -28,7 +28,7 @@ const features: Feature[] = [
     },
     {
         title: "Expert CV Writing Services",
-        description: "Professional writers available to craft personalized CVs that highlight your unique skills and experiences.",
+        description: "Expert writers crafting personalized CVs to highlight your skills and experiences",
         iconSrc: "/assets/writer.png",
         iconAlt: "Expert CV Writing Services Icon"
     },
@@ -52,7 +52,6 @@ const FeatureSection = () => {
                     fontWeight: 'bold',
                     color: 'primary.main',
                     mb: 2,
-                    textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
                 }}
             >
                 Our Features
@@ -70,7 +69,6 @@ const FeatureSection = () => {
                     fontSize: '1.1rem',
                     padding: '0 16px',
                     paddingBottom: 2,
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
                 }}
             >
                 Explore our tailored CV writing services designed to enhance your career opportunities and success.
@@ -89,7 +87,7 @@ const FeatureSection = () => {
                                     },
                                     border: '1px solid #e0e0e0',
                                     borderRadius: 2,
-                                    backgroundColor: '#ffffff',
+                                    backgroundColor: '#f9f9f9',
                                 }}
                             >
                                 <CardContent sx={{ textAlign: 'center', padding: '30px' }}>

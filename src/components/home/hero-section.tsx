@@ -58,7 +58,7 @@ function HeroSection({ scrollToPricing }: HeroSectionProps) {
             sx={{
               mb: 2,
               fontSize: '1.1rem',
-              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
+              
             }}
           >
             Unlock Your Career Potential with Expertly Crafted CVs and Resumes
@@ -74,7 +74,7 @@ function HeroSection({ scrollToPricing }: HeroSectionProps) {
                   alignItems: 'center',
                   mb: 1,
                   fontSize: '1.1rem',
-                  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
+                 
                   textTransform: 'uppercase',
                   transition: 'color 0.3s, transform 0.3s',
                   '&:hover': {

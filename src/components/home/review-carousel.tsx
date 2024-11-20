@@ -4,6 +4,7 @@ import { Box, Card, CardContent, Divider, Typography } from '@mui/material';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { ArrowBack, ArrowForward } from '@mui/icons-material';
 
 const reviews = [
   { name: "Peter Njoroge", review: "Very professional team! They offered valuable suggestions for improving my CV.", rating: "⭐⭐⭐⭐" },
@@ -51,28 +52,54 @@ interface ArrowProps {
 }
 
 const CustomNextArrow: React.FC<ArrowProps> = ({ onClick }) => (
+
   <div
     className="custom-arrow next"
     onClick={onClick}
-    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick?.() }}
+    onKeyDown={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') onClick?.();
+    }}
     role="button"
     tabIndex={0}
     aria-label="Next slide"
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '40px',
+      height: '40px',
+      borderRadius: '50%',
+      backgroundColor: 'primary.main',
+      cursor: 'pointer',
+    }}
   >
-    &#9654; {/* Right arrow symbol */}
+    <ArrowForward sx={{ color: 'primary.main' }} />
   </div>
 );
 
+
+
 const CustomPrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
-  <div
-    className="custom-arrow prev"
+  <div className="custom-arrow prev"
     onClick={onClick}
-    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick?.() }}
+    onKeyDown={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') onClick?.();
+    }}
     role="button"
     tabIndex={0}
     aria-label="Previous slide"
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '40px',
+      height: '40px',
+      borderRadius: '50%',
+      backgroundColor: 'primary.main',
+      cursor: 'pointer',
+    }}
   >
-    &#9664; {/* Left arrow symbol */}
+    <ArrowBack sx={{ color: 'primary.main' }} />
   </div>
 );
 
@@ -82,7 +109,7 @@ const settings = {
   infinite: true,
   speed: 500,
   autoplay: true,
-  autoplaySpeed: 4000, 
+  autoplaySpeed: 4000,
   slidesToShow: 3,
   slidesToScroll: 1,
   nextArrow: <CustomNextArrow />,
@@ -103,34 +130,6 @@ const settings = {
   ],
 };
 
-// interface DotsProps {
-//   slideCount: number;
-//   currentSlide: number;
-//   goToSlide: (index: number) => void;
-// }
-
-// Define the Dots component outside of the ReviewCarousel component
-// const Dots: React.FC<DotsProps> = ({ slideCount, currentSlide, goToSlide }) => {
-//   const totalSlides = Math.ceil(slideCount / settings.slidesToShow);
-//   const visibleDots = Math.min(3, totalSlides);
-
-//   return (
-//     <ul className="slick-dots">
-//       {Array.from({ length: visibleDots }).map((_, index) => (
-//         <li key={index} className={currentSlide === index ? "slick-active" : ""}>
-//           <button
-//             type="button"
-//             onClick={() => {
-//               goToSlide(index * settings.slidesToShow);
-//             }}
-//           >
-//             {index + 1}
-//           </button>
-//         </li>
-//       ))}
-//     </ul>
-//   );
-// };
 
 const ReviewCarousel: React.FC = () => (
   <Box sx={{ padding: 4 }}>
@@ -161,16 +160,15 @@ const ReviewCarousel: React.FC = () => (
         fontSize: '1.1rem',
         padding: '0 16px',
         paddingBottom: 2,
-        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
       }}
     >
-Our clients appreciate our dedication to crafting exceptional resumes that help them achieve their career goals. Here&apos;s what they have to say about our services
-</Typography>
+      Our clients appreciate our dedication to crafting exceptional resumes that help them achieve their career goals. Here&apos;s what they have to say about our services
+    </Typography>
 
     <div className="review-carousel">
-    <Slider
+      <Slider
         {
-          ...settings
+        ...settings
         }
       >
         {reviews.map((review, index) => (
@@ -181,7 +179,7 @@ Our clients appreciate our dedication to crafting exceptional resumes that help 
                 boxShadow: 3,
                 borderRadius: 2,
                 minHeight: "150px",
-                backgroundColor: '#ffffff', // Light background color
+                backgroundColor: '#f9f9f9', // Light background color
                 transition: 'transform 0.3s, box-shadow 0.3s', // Smooth transition for hover effects
                 '&:hover': {
                   transform: 'scale(1.02)', // Slight zoom effect on hover

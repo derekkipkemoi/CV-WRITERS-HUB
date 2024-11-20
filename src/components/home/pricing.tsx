@@ -1,43 +1,52 @@
-"use client"
-import React from 'react';
-import { Box, Card, CardContent, CardHeader, Button, Grid, Typography, Divider, Container } from '@mui/material';
+'use client';
+import React, { useState } from 'react';
+import {
+  Box,
+  Grid,
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  useMediaQuery,
+  IconButton,
+  Divider,
+  Container,
+} from '@mui/material';
+import { ArrowBack, ArrowForward } from '@mui/icons-material';
+import { styled } from '@mui/system';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { CurrencyType } from '@/types/order';
 
-// Mock function to get the user's currency and format prices
-const getCurrency = () => {
-  return {
-    symbol: 'KES', // Kenyan Shilling for example
-    rate: 1, // Conversion rate, assuming prices are already in KES
-  };
-};
+interface PricingOption {
+  title: string;
+  price: number;
+  currency: string;
+  orderRevision: number;
+  description: string;
+  features: string[];
+  highlight: boolean;
+}
 
-const formatPrice = (price: number, currency: CurrencyType): string => {
-  return `${currency.symbol} ${price * currency.rate}`;
-};
-
-const currency = getCurrency();
-
-const pricingOptions = [
+const pricingOptions: PricingOption[] = [
   {
     title: 'Standard CV Writing',
     price: 1500,
-    currency: currency,
+    currency: 'KES',
     orderRevision: 1,
-    description: 'A professional CV writing service designed to showcase your skills and experience effectively',
+    description: 'A professional CV writing service designed to showcase your skills and experience effectively.',
     features: [
       'Custom CV by a professional writer',
       'One revision round',
       'ATS optimization',
       'Download in PDF/DOCX',
       'Professional formatting',
+      'User dashboard and support'
     ],
     highlight: false,
   },
   {
     title: 'Premium CV Writing',
     price: 3000,
-    currency: currency,
+    currency: 'KES',
     orderRevision: 3,
     description: 'A comprehensive CV and cover letter writing service tailored for career advancement.',
     features: [
@@ -46,6 +55,7 @@ const pricingOptions = [
       'ATS optimization',
       'Download in PDF/DOCX',
       'Professional formatting',
+      'User dashboard and support',
       'Custom cover letter',
       'Priority support',
       'LinkedIn profile optimization',
@@ -55,7 +65,7 @@ const pricingOptions = [
   {
     title: 'Executive CV Writing',
     price: 5000,
-    currency: currency,
+    currency: 'KES',
     orderRevision: 10,
     description: 'An elite CV writing service for executives, highlighting leadership and strategic vision.',
     features: [
@@ -64,6 +74,7 @@ const pricingOptions = [
       'ATS optimization',
       'Download in PDF/DOCX',
       'Professional formatting',
+      'User dashboard and support',
       'Custom cover letter',
       'Priority support',
       'LinkedIn profile optimization',
@@ -74,7 +85,7 @@ const pricingOptions = [
   {
     title: 'Cover Letter Writing',
     price: 500,
-    currency: currency,
+    currency: 'KES',
     orderRevision: 1,
     description: 'A professionally crafted cover letter to complement your CV and enhance your job applications.',
     features: [
@@ -82,13 +93,14 @@ const pricingOptions = [
       'One revision round',
       'Tailored to job applications',
       'Professional formatting',
+      'User dashboard and support'
     ],
     highlight: false,
   },
   {
     title: 'LinkedIn Profile Optimization',
     price: 1000,
-    currency: currency,
+    currency: 'KES',
     orderRevision: 1,
     description: 'Optimize your LinkedIn profile to attract recruiters and showcase your professional brand.',
     features: [
@@ -97,31 +109,120 @@ const pricingOptions = [
       'Professional formatting',
       'Profile image recommendations',
       'Custom headline and summary',
+      'User dashboard and support'
     ],
     highlight: false,
   },
 ];
 
+const StyledCard = styled(Card)<{ selected: boolean }>(() => ({
+  border: '1px solid #e0e0e0',
+  borderRadius: '15px',
+  transition: 'all 0.3s ease',
+  cursor: 'pointer',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  height: '100%',
+  marginRight: '5px',
+  marginLeft: '5px',
+  backgroundColor: 'white',
+  '&:hover': {
+    boxShadow: '0px 6px 20px rgba(0, 0, 0, 0.1)',
+    transform: 'scale(1.01)',
+  },
+}));
+
+const PricingCard: React.FC<{ option: PricingOption; selected: boolean; onSelect: () => void }> = ({ option, selected, onSelect }) => {
+  const { title, price, currency, description, features, highlight } = option;
+  return (
+    <StyledCard variant="outlined" selected={selected} onClick={onSelect}>
+      <CardContent>
+        <Typography variant="h6"
+          sx={{ fontWeight: 'bold', mb: 1 }} 
+          color={highlight ? 'primary' : 'textPrimary'}>
+          {title}
+        </Typography>
+        <Divider sx={{ my: 1, backgroundColor: 'primary.main', height: '2px' }} />
+        <Typography
+          variant="h6"
+          component="div"
+          color="textSecondary"
+          sx={{ fontWeight: 'bold', margin: '8px 0' }}
+        >
+          {currency} {price}
+        </Typography>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{ mb: 1 }} // Margin below for spacing
+        >
+          {description}
+        </Typography>
+        <ul style={{ paddingLeft: '20px', margin: '16px 0' }}>
+          {features.map((feature, index) => (
+            <li
+              key={index}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: '8px',
+              }}
+            >
+              <CheckCircleIcon
+                sx={{
+                  color: 'primary.main',
+                  fontSize: '1.2rem',
+                  marginRight: '8px',
+                }}
+              />
+              <Typography variant="body2" component="div" sx={{ color: 'text.secondary' }}>
+                {feature}
+              </Typography>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+      <Button
+        variant='contained'
+        color="primary"
+        sx={{
+          m: 2,
+          borderRadius: '24px',
+          textTransform: 'none',
+          fontWeight: 'bold',
+        }}
+      >
+        Select
+      </Button>
+    </StyledCard>
+  );
+};
+
 const PricingCards: React.FC = () => {
+  const isLargeScreen = useMediaQuery('(min-width:1200px)');
+  const isMediumScreen = useMediaQuery('(min-width:1000px) and (max-width:1199px)');
 
-  // const handlePackageSelect = (option: typeof pricingOptions[0]): void => {
-  //   setOrderPackage({
-  //     title: option.title,
-  //     price: `${option.price}`, // Convert to string to match the type
-  //     orderRevision: option.orderRevision,
-  //     currency: option.currency,
-  //     description: option.description,
-  //     features: option.features,
-  //   });
+  const [scrollIndex, setScrollIndex] = useState(0);
+  const [selectedCard, setSelectedCard] = useState<number | null>(null);
 
-    // Uncomment if you plan to use the router
-    // if (orderPackage) {
-    //   router.push(paths.auth.signUp);
-    // }
-  // };
+  const cardsPerPage = isLargeScreen ? 3 : isMediumScreen ? 2 : 1;
+  const maxScrollIndex = Math.max(0, pricingOptions.length - cardsPerPage);
+
+  const handlePrev = () => {
+    setScrollIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const handleNext = () => {
+    setScrollIndex((prevIndex) => Math.min(prevIndex + 1, maxScrollIndex));
+  };
+
+  const handleSelect = (index: number) => {
+    setSelectedCard(index);
+  };
 
   return (
-    <Box sx={{ padding: 4 }}>
+    <Container sx={{ padding: 4 }}>
       <Typography
         variant="h4"
         component="h2"
@@ -138,128 +239,39 @@ const PricingCards: React.FC = () => {
       </Typography>
       <Typography
         variant="body1"
-        component="p"
-        gutterBottom
         align="center"
         sx={{
-          maxWidth: '600px',
+          maxWidth: '700px',
           mx: 'auto',
-          lineHeight: 1.6,
+          lineHeight: 1.8,
           color: 'text.secondary',
           fontSize: '1.1rem',
-          padding: '0 16px',
-          paddingBottom: 2,
-          textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
+          mb: 4,
         }}
       >
         Choose from our range of CV writing services to find the one that suits your career goals best. Each package is tailored to meet your specific needs.
       </Typography>
 
-      <Container>
-        <Grid container spacing={4} justifyContent="center">
-          {pricingOptions.map((option, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card
-                variant="outlined"
-                sx={{
-                  textAlign: 'center',
-                  height: '100%',
-                  boxShadow: option.highlight ? 6 : 3,
-                  borderRadius: 2,
-                  position: 'relative',
-                  '&:hover': {
-                    boxShadow: 6,
-                    transform: 'scale(1.03)',
-                    transition: '0.3s ease-in-out',
-                  },
-                  bgcolor: '#ffffff',
-                  border: '1px solid #e0e0e0',
-                }}
-              >
-                <CardHeader
-                  title={option.title}
-                  sx={{
-                    backgroundColor: option.highlight ? 'primary.main' : 'transparent',
-                    color: option.highlight ? 'white' : 'text.primary',
-                    borderTopLeftRadius: 2,
-                    borderTopRightRadius: 2,
-                    fontSize: '1.5rem',
-                    padding: '16px 0',
-                    fontWeight: 'bold'
-                  }}
-                />
-                
-                <Divider sx={{ backgroundColor: 'primary.main', height: '2px' }} />
-                <CardContent sx={{ padding: '24px 16px' }}>
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      mb: 2,
-                      fontWeight: 'bold',
-                      borderBottom: `2px solid primary.main`,
-                      display: 'inline-block',
-                      paddingBottom: '4px',
-                    }}
-                  >
-                    {formatPrice(option.price, option.currency)}
-                  </Typography>
-
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      mb: 3,
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {option.description}
-                  </Typography>
-                  <Divider sx={{ margin: '10px 0', backgroundColor: 'primary.main', height: '0.5px' }} />
-                  <Box sx={{ mb: 3, textAlign: 'left' }}>
-                    {option.features.map((feature, idx) => (
-                      <Typography
-                        key={idx}
-                        variant="body2"
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          mb: 0.5,
-                          '&:before': {
-                            content: '""',
-                            color: 'primary.main',
-                            marginRight: 1,
-                          },
-                          '& svg': {
-                            marginRight: 1,
-                          },
-                        }}
-                      >
-                        <CheckCircleIcon sx={{ color: 'primary.main', fontSize: '1rem' }} />
-                        {feature}
-                      </Typography>
-                    ))}
-                  </Box>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    sx={{
-                      borderRadius: 20,
-                      padding: '10px 20px',
-                      fontSize: '1rem',
-                      textTransform: 'none',
-                    }}
-                    // onClick={() => handlePackageSelect(option)}
-                    role="button" // optional, for clarity
-                  >
-                    Get Started
-                  </Button>
-                </CardContent>
-              </Card>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <IconButton onClick={handlePrev} disabled={scrollIndex === 0}  sx={{boxShadow: '2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1)', color: 'primary.main', backgroundColor: 'white' }}>
+          <ArrowBack />
+        </IconButton>
+        <Grid container wrap="nowrap" sx={{ overflow: 'hidden' }}>
+          {pricingOptions.slice(scrollIndex, scrollIndex + cardsPerPage).map((option, index) => (
+            <Grid item key={index} xs={12 / cardsPerPage}>
+              <PricingCard
+                option={option}
+                selected={selectedCard === index + scrollIndex}
+                onSelect={() => handleSelect(index + scrollIndex)}
+              />
             </Grid>
           ))}
         </Grid>
-      </Container>
-    </Box>
+        <IconButton onClick={handleNext} disabled={scrollIndex === maxScrollIndex} sx={{boxShadow: '2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1)', color: 'primary.main', backgroundColor: 'white' }}>
+          <ArrowForward />
+        </IconButton>
+      </Box>
+    </Container>
   );
 };
 

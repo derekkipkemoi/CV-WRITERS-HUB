@@ -90,20 +90,19 @@ const FAQSection: React.FC<FAQSectionProps> = ({ scrollToPricing }) => {
           fontSize: '1.1rem',
           padding: '0 16px',
           paddingBottom: 2,
-          textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
         }}
       >
         Find answers to frequently asked questions about CV & Resume writing      </Typography>
 
       {faqData.map((faq, index) => (
-        <Accordion key={faq.question} sx={{ marginBottom: '10px', borderRadius: '8px', boxShadow: 2 }}>
+        <Accordion key={faq.question} sx={{ marginBottom: '10px', borderRadius: '15px', p: 2, boxShadow: 2, border: '1px solid #e0e0e0', }}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon sx={{ color: 'primary.main' }} />}
             aria-controls={`panel${index}-content`}
             id={`panel${index}-header`}
             sx={accordionSummaryStyles}
           >
-            <Typography variant="body1" sx={{ fontWeight: 'bold', color: 'text.primary', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)', }}>
+            <Typography variant="body1" sx={{ fontWeight: 'bold', color: 'text.primary' }}>
               {faq.question}
             </Typography>
           </AccordionSummary>
