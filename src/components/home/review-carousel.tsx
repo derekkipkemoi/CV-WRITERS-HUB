@@ -181,7 +181,7 @@ Our clients appreciate our dedication to crafting exceptional resumes that help 
                 boxShadow: 3,
                 borderRadius: 2,
                 minHeight: "150px",
-                backgroundColor: '#f9f9f9', // Light background color
+                backgroundColor: '#ffffff', // Light background color
                 transition: 'transform 0.3s, box-shadow 0.3s', // Smooth transition for hover effects
                 '&:hover': {
                   transform: 'scale(1.02)', // Slight zoom effect on hover

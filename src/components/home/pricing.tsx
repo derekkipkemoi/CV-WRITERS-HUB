@@ -156,7 +156,7 @@ const PricingCards: React.FC = () => {
       </Typography>
 
       <Container>
-        <Grid container spacing={3} justifyContent="center">
+        <Grid container spacing={4} justifyContent="center">
           {pricingOptions.map((option, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Card
@@ -173,7 +173,7 @@ const PricingCards: React.FC = () => {
                     transition: '0.3s ease-in-out',
                   },
                   bgcolor: '#ffffff',
-                  border: option.highlight ? `2px solid primary.main` : 'none',
+                  border: '1px solid #e0e0e0',
                 }}
               >
                 <CardHeader

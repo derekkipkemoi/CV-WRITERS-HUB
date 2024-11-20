@@ -87,7 +87,7 @@ const FeatureSection = () => {
                                         transform: 'scale(1.05)',
                                         boxShadow: '0px 12px 24px rgba(0, 0, 0, 0.2)',
                                     },
-                                    border: `2px solid primary.main`,
+                                    border: '1px solid #e0e0e0',
                                     borderRadius: 2,
                                     backgroundColor: '#ffffff',
                                 }}
