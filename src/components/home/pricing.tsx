@@ -7,7 +7,7 @@ import { CurrencyType } from '@/types/order';
 // Mock function to get the user's currency and format prices
 const getCurrency = () => {
   return {
-    symbol: 'USD', // Kenyan Shilling for example
+    symbol: 'KES', // Kenyan Shilling for example
     rate: 1, // Conversion rate, assuming prices are already in KES
   };
 };
@@ -21,7 +21,7 @@ const currency = getCurrency();
 const pricingOptions = [
   {
     title: 'Standard CV Writing',
-    price: 15,
+    price: 1500,
     currency: currency,
     orderRevision: 1,
     description: 'A professional CV writing service designed to showcase your skills and experience effectively',
@@ -36,7 +36,7 @@ const pricingOptions = [
   },
   {
     title: 'Premium CV Writing',
-    price: 30,
+    price: 3000,
     currency: currency,
     orderRevision: 3,
     description: 'A comprehensive CV and cover letter writing service tailored for career advancement.',
@@ -54,7 +54,7 @@ const pricingOptions = [
   },
   {
     title: 'Executive CV Writing',
-    price: 50,
+    price: 5000,
     currency: currency,
     orderRevision: 10,
     description: 'An elite CV writing service for executives, highlighting leadership and strategic vision.',
@@ -73,7 +73,7 @@ const pricingOptions = [
   },
   {
     title: 'Cover Letter Writing',
-    price: 5,
+    price: 500,
     currency: currency,
     orderRevision: 1,
     description: 'A professionally crafted cover letter to complement your CV and enhance your job applications.',
@@ -87,7 +87,7 @@ const pricingOptions = [
   },
   {
     title: 'LinkedIn Profile Optimization',
-    price: 10,
+    price: 1000,
     currency: currency,
     orderRevision: 1,
     description: 'Optimize your LinkedIn profile to attract recruiters and showcase your professional brand.',
