@@ -18,7 +18,8 @@ const services = [
   "LinkedIn Profile Optimization",
   "Tailored Resume Templates",
   "ATS-Friendly Resume Optimization",
-  "User Dashboard & Support"
+  "User Dashboard & Support",
+  "PDF/DOCX Download Options"
 ];
 
 interface HeroSectionProps {
