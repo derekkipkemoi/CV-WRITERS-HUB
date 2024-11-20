@@ -139,7 +139,7 @@ const PricingCard: React.FC<{ option: PricingOption; selected: boolean; onSelect
     <StyledCard variant="outlined" selected={selected} onClick={onSelect}>
       <CardContent>
         <Typography variant="h6"
-          sx={{ fontWeight: 'bold', mb: 1 }} 
+          sx={{ fontWeight: 'bold', mb: 1 }}
           color={highlight ? 'primary' : 'textPrimary'}>
           {title}
         </Typography>
@@ -222,7 +222,7 @@ const PricingCards: React.FC = () => {
   };
 
   return (
-    <Container sx={{ padding: 4 }}>
+    <Container sx={{ paddingTop: 8, paddingBottom: 8 }}>
       <Typography
         variant="h4"
         component="h2"
@@ -253,7 +253,15 @@ const PricingCards: React.FC = () => {
       </Typography>
 
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <IconButton onClick={handlePrev} disabled={scrollIndex === 0}  sx={{boxShadow: '2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1)', color: 'primary.main', backgroundColor: 'white' }}>
+        <IconButton
+          onClick={() => { handlePrev(); }}
+          disabled={scrollIndex === 0}
+          sx={{
+            boxShadow: '2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1)',
+            color: 'primary.main',
+            backgroundColor: 'white',
+          }}
+        >
           <ArrowBack />
         </IconButton>
         <Grid container wrap="nowrap" sx={{ overflow: 'hidden' }}>
@@ -262,15 +270,24 @@ const PricingCards: React.FC = () => {
               <PricingCard
                 option={option}
                 selected={selectedCard === index + scrollIndex}
-                onSelect={() => handleSelect(index + scrollIndex)}
+                onSelect={() => { handleSelect(index + scrollIndex); }}
               />
             </Grid>
           ))}
         </Grid>
-        <IconButton onClick={handleNext} disabled={scrollIndex === maxScrollIndex} sx={{boxShadow: '2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1)', color: 'primary.main', backgroundColor: 'white' }}>
+        <IconButton
+          onClick={() => { handleNext(); }}
+          disabled={scrollIndex === maxScrollIndex}
+          sx={{
+            boxShadow: '2px 2px 2px 2px rgba(0.1, 0.1, 0.1, 0.1)',
+            color: 'primary.main',
+            backgroundColor: 'white',
+          }}
+        >
           <ArrowForward />
         </IconButton>
       </Box>
+
     </Container>
   );
 };

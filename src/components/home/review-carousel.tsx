@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { Box, Card, CardContent, Divider, Typography } from '@mui/material';
+import { Box, Card, CardContent, Container, Divider, Typography } from '@mui/material';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -132,7 +132,7 @@ const settings = {
 
 
 const ReviewCarousel: React.FC = () => (
-  <Box sx={{ padding: 4 }}>
+  <Container sx={{ paddingTop: 8, paddingBottom:8 }}>
     <Typography
       variant="h4"
       component="h2"
@@ -216,7 +216,7 @@ const ReviewCarousel: React.FC = () => (
         ))}
       </Slider>
     </div>
-  </Box>
+  </Container>
 );
 
 export default ReviewCarousel;

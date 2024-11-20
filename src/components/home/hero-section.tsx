@@ -28,7 +28,7 @@ interface HeroSectionProps {
 
 function HeroSection({ scrollToPricing }: HeroSectionProps) {
   return (
-    <Container sx={{ pt: 10, pb: 10 }}>
+    <Container sx={{paddingTop: 10, paddingBottom:10}}>
       <Box
         sx={{
           display: 'flex',

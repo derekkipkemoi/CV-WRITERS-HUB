@@ -62,7 +62,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ scrollToPricing }) => {
   };
 
   return (
-    <Container sx={{ padding: 4 }}>
+    <Container sx={{ paddingTop: 8, paddingBottom:8 }}>
       <Typography
         variant="h4"
         component="h2"

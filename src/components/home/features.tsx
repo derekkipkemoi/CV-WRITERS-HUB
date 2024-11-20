@@ -42,7 +42,7 @@ const features: Feature[] = [
 
 const FeatureSection = () => {
     return (
-        <Box sx={{ padding: 4 }}>
+        <Box sx={{ paddingTop: 8, paddingBottom:8}}>
             <Typography
                 variant="h4"
                 component="h2"
