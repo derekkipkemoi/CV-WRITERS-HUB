@@ -75,8 +75,25 @@ const FAQSection: React.FC<FAQSectionProps> = ({ scrollToPricing }) => {
           textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
         }}
       >
-        Frequently Asked Questions
+        CV & Resume Writing FAQs
       </Typography>
+      <Typography
+        variant="body1"
+        component="p"
+        gutterBottom
+        align="center"
+        sx={{
+          maxWidth: '600px',
+          mx: 'auto',
+          lineHeight: 1.6,
+          color: 'text.secondary',
+          fontSize: '1.1rem',
+          padding: '0 16px',
+          paddingBottom: 2,
+          textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
+        }}
+      >
+        Find answers to frequently asked questions about CV & Resume writing      </Typography>
 
       {faqData.map((faq, index) => (
         <Accordion key={faq.question} sx={{ marginBottom: '10px', borderRadius: '8px', boxShadow: 2 }}>

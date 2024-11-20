@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Typography, CardContent, CardActions, Divider, Container } from '@mui/material';
-import { ArrowCircleRight, Star } from '@mui/icons-material';
+import { ArrowCircleRight, Check, CheckCircleOutlineOutlined, Star } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
 const BlinkingIcon = styled(ArrowCircleRight)(() => ({
@@ -27,7 +27,7 @@ interface HeroSectionProps {
 
 function HeroSection({ scrollToPricing }: HeroSectionProps) {
   return (
-    <Container sx={{ pt: 8, pb: 6 }}>
+    <Container sx={{ pt: 10, pb: 10 }}>
       <Box
         sx={{
           display: 'flex',
@@ -44,15 +44,15 @@ function HeroSection({ scrollToPricing }: HeroSectionProps) {
             align="left"
             sx={{
               fontWeight: 'bold',
-              color: 'primary.main',
-              textShadow: '1px 1px 3px rgba(0, 0, 0, 0.3)',
+              color: 'white',
             }}
           >
-            Premier CV & Resume Writing Services
+            Premier <span style={{ color: '#6a0dad' }}>CV & Resume</span> Writing Services
           </Typography>
+
           <Typography
             variant="body1"
-            color="text.secondary"
+            color="#F0F0F0"
             align="left"
             sx={{
               mb: 2,
@@ -65,9 +65,9 @@ function HeroSection({ scrollToPricing }: HeroSectionProps) {
           <CardContent sx={{ p: 0 }}>
             {services.map((service) => (
               <Typography
-                key={service} // Use 'service' as the key
+                key={service}
                 variant="h6"
-                color="text.secondary"
+                color="#F0F0F0"
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
@@ -75,14 +75,18 @@ function HeroSection({ scrollToPricing }: HeroSectionProps) {
                   fontSize: '1.1rem',
                   textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
                   textTransform: 'uppercase',
-                  width: '100%',
+                  transition: 'color 0.3s, transform 0.3s',
+                  '&:hover': {
+                    color: '#6a0dad',
+                    transform: 'translateX(5px)',
+                  },
                 }}
               >
-                <Star sx={{ color: 'primary.main', mr: 1 }} />
+                <CheckCircleOutlineOutlined sx={{ color: '#6a0dad', mr: 2 }} />
                 <span>{service}</span>
               </Typography>
             ))}
-            <Divider sx={{ my: 2, bgcolor: 'primary.main', height: 2 }} />
+            <Divider sx={{ my: 2, bgcolor: 'gray', height: 2 }} />
           </CardContent>
           <CardActions sx={{ justifyContent: 'center' }}>
             <Button
@@ -118,7 +122,7 @@ function HeroSection({ scrollToPricing }: HeroSectionProps) {
         >
           <Box
             component="img"
-            src="/assets/our_writer.webp"
+            src="/assets/hero.svg"
             alt="Smiling woman using a laptop in a modern workspace."
             sx={{
               maxWidth: '100%',
@@ -126,7 +130,7 @@ function HeroSection({ scrollToPricing }: HeroSectionProps) {
               borderRadius: 2,
               maxHeight: '350px',
               objectFit: 'cover',
-              boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+              // boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
               transition: 'transform 0.3s',
               '&:hover': {
                 transform: 'scale(1.05)',

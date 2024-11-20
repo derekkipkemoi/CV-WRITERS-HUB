@@ -14,9 +14,23 @@ function Header(): React.JSX.Element { // Changed to function declaration with r
           CV WRITERS HUB
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Button color="inherit" sx={{ mr: 2 }}>
-            LOGIN
+          <Button
+            color="inherit"
+            variant="outlined"
+            sx={{
+              mr: 2,
+              padding: '8px 16px',  // Adjust padding as needed
+              borderColor: 'white',  // Set border color to white or another color
+              color: 'white',        // Set text color to match the border
+              '&:hover': {
+                borderColor: 'white',  // Border color on hover
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',  // Optional: Light hover effect
+              }
+            }}
+          >
+            Log in
           </Button>
+
         </Box>
       </Toolbar>
     </AppBar>

@@ -21,16 +21,16 @@ function Page(): React.JSX.Element {  // Declared as function declaration and ad
   return (
     <Box>
       <Header />
-      <Box sx={{ backgroundColor: '#e0f7fa', textAlign: 'center' }}>
+      <Box sx={{ backgroundColor: 'primary.main', textAlign: 'center' }}>
         <HeroSection scrollToPricing={scrollToPricing} />
       </Box>
-      <Box sx={{ backgroundColor: '#ffe0b2', textAlign: 'center' }}>
+      <Box sx={{ backgroundColor: '#ffff', textAlign: 'center' }}>
         <ReviewCarousel />
       </Box>
       <Box ref={pricingRef} sx={{ backgroundColor: '#e0f7fa', textAlign: 'center' }}>
         <PricingCards />
       </Box>
-      <Box sx={{ backgroundColor: '#ffe0b2', textAlign: 'center' }}>
+      <Box sx={{ backgroundColor: '#ffff', textAlign: 'center' }}>
         <FeatureSection />
       </Box>
       <Box sx={{ backgroundColor: '#e0f7fa', textAlign: 'center' }}>
